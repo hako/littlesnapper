@@ -1,4 +1,3 @@
-
 # littlesnapper
 
 ![](https://github-camo.global.ssl.fastly.net/4d0742ffd11e2a077adb62839c1bc283a4fa60fb/687474703a2f2f7331332e706f7374696d672e6f72672f647a79666e346666622f494d475f303036322e6a7067)
@@ -87,7 +86,12 @@ snaphax - a reverse engineered snapchat library to interface with the snapchat a
 
 imagecrop - an image cropping library made by [abraham daniel][@abrahamdaniel]
 
-and team snapchat!
+
+Team Snapchat
+
+and
+
+BERG Cloud for creating Little Printer!
 
 http://hakob.yt/e/
 
