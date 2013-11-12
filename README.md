@@ -1,12 +1,13 @@
 # littlesnapper
 
-littlesnapper *alias* 'whippersnapper' - captures and prints snapchat pictures to a connected inkless BERG Little Printer.
+#### a tool to capture and print snapchat pictures to a connected inkless BERG Little Printer.
 
-little printer
-
+BERG Little Printer
 <http://bergcloud.com/littleprinter/>
 
 littlesnapper captures unread snapchat images, hosts the image for 45 seconds to allow the little printer to parse and print the image and then deletes it.  
+
+littlesnapper's old name was *'whippersnapper'* 
 
 ## requirements
 
@@ -60,20 +61,23 @@ MIT
 
 ## credits
 
-littlesnapper was made by [@hakobyte][]
+littlesnapper was made by [@hakobyte][@hakobyte]
 
 snaphax - a reverse engineered snapchat library to interface with the snapchat api by
 
-[@tlack][@hakobyte]
+[@tlack][@tlack]
 
 &
 
-[@adamcaudill][@hakobyte]
+[@adamcaudill][@adamcaudill]
 
-imagecrop - an image cropping library made by [abraham daniel][@hakobyte]
+imagecrop - an image cropping library made by [abraham daniel][@abrahamdaniel]
 
 and team snapchat!
 
 http://hakob.yt/e/
 
-  [@hakobyte]: https://github.com/abrahamdaniel/imageCrop
+  [@hakobyte]: https://twitter.com/hakobyte
+  [@tlack]: https://twitter.com/tlack
+  [@adamcaudill]: https://twitter.com/adamcaudill
+  [@abrahamdaniel]:https://github.com/abrahamdaniel/imageCrop
