@@ -39,6 +39,7 @@ function main()
     
     $snaptotal = 0; // total images collected.
     $count     = 0; // how many snaps littlesnapper collected.
+    $url; // image url.
     
     echo 'littlesnapper v1.2 [c] 2013 hako';
     echo "\n";
@@ -118,6 +119,14 @@ function main()
     }
     
     echo "retrieved $snaptotal snap(s). \n";
+    
+    // Check if $url is empty before printing.
+    
+    if(empty($url))
+		
+		{
+			exit();
+		}
     
     // Send picture to the little printer to print.
     
