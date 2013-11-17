@@ -1,6 +1,6 @@
 # littlesnapper
 
-![](https://github-camo.global.ssl.fastly.net/4d0742ffd11e2a077adb62839c1bc283a4fa60fb/687474703a2f2f7331332e706f7374696d672e6f72672f647a79666e346666622f494d475f303036322e6a7067)
+![](http://hakobaito.co.uk/content/01389892049828525366.png)
 
 
 #### a tool to capture and print snapchat pictures to a connected inkless BERG Little Printer.
@@ -52,9 +52,17 @@ and now using php in the command-line, type:
     
 here's a few of mine.
 
-![](http://s16.postimg.org/turdte4d1/IMG_0063.jpg)
+![](http://www.hakobaito.co.uk/content/687474703a2f2f7331362e706f7374696d672e6f72672f7475726474653464312f494d475f303036332e6a7067.jpg)
 
 It is possible to use cron jobs on a server for littlesnapper.
+
+_(I ran into alot of permissions errors when using the cron job. Sometimes littesnapper will print a blank image.)_
+
+_to bypass this make sure you put your cron job in:_
+
+    /etc/crontab
+    
+_(and clear your snapchat feed, that helps too.)_
 
 just don't turn it into a cron job disaster like mine was.
 
