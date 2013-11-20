@@ -76,6 +76,8 @@ support for printing multiple snaps.
 
 implement dithering algorithms (for shading)
 
+security
+
 config file.
 
 ## license
