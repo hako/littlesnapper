@@ -58,23 +58,25 @@ It is possible to use cron jobs on a server for littlesnapper.
 
 _(I ran into alot of permissions errors when using the cron job. Sometimes littesnapper will print a blank image.)_
 
-_to bypass this make sure you put your cron job in:_
+_to try, use_
 
-    /etc/crontab
+    crontab -e
     
-_(and clear your snapchat feed, that helps too.)_
+_and enter the path to where php is (/usr/bin/php) & the directory to where littlesnapper is._
 
 just don't turn it into a cron job disaster like mine was.
 
 <https://twitter.com/hakobyte/status/399846094852861953/photo/1>
 
-## future
+## future/todo
 
-config file.
+(in order of precedence)
+
+support for printing multiple snaps.
 
 implement dithering algorithms (for shading)
 
-support for printing multiple snaps.
+config file.
 
 ## license
 
