@@ -74,11 +74,11 @@ just don't turn it into a cron job disaster like mine was.
 
 support for printing multiple snaps.
 
-implement dithering algorithms (for shading)
-
 security
 
 config file.
+
+<del>implement dithering algorithms (for shading)<del>
 
 ## license
 
