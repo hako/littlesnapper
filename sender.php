@@ -50,8 +50,8 @@ class Sender
         
         curl_setopt($cur, CURLOPT_POST, true);
         curl_setopt($cur, CURLOPT_POSTFIELDS, $postargs);
-        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><h1>littlesnapper<h1/><img%20src="' . 'DIRECTORY_TO_LITTLE_SNAPPER' . $postargs['html'] . '"</img></center></body></html>');
-        
+        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><h1>littlesnapper<h1/><img%20class="dither"%20src="' . 'DIRECTORY_TO_LITTLE_SNAPPER' . $postargs['html'] . '"</img></center></body></html>');
+
         curl_exec($cur);
         
         //returns 'OK' if successful or 'Invalid code' for unsuccessful.

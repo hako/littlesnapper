@@ -1,1 +1,1 @@
-<html><center><h1>littlesnapper<h1/><img src=""/></body></center><html/>
+<html><center><h1>littlesnapper<h1/><img class="dither" src=""/></img></body></center><html/>
