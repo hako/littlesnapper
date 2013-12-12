@@ -26,6 +26,8 @@ to run littlesnapper you would need:
 
 -   php-curl
 
+-	php-gd
+
 -   mcrypt
 
 -   A BERG Little Printer
