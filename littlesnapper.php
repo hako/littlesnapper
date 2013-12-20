@@ -21,81 +21,131 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+                                           ``` .oo- 
+                            /++++++++++++++++++++++o/
+                            s:.....................:s
+                            s:.....................:s
+                            s:....+osssssoosyos/...:s
+                            s:...-///////+yddhhy...:s
+                            s:...sssssyhmMNmMmNd:..:s
+                            s:...MMMMdNMMMMhMMMMo..:s
+                            s:...mMMMMMMMMMMMMMN/..:s
+                            s:.../MMMMMdmdNMMMMy...:s
+                            s:...-dMMMMMNMMMMMN/...:s
+                            s:......----------.....:s
+                            s:.....................:s
+                            oo+++++++++++++++++++++oo
+                                |               |     
+                                |     - -  -    |     
+                                |_  __ _______  |   
+                               |                 |
+                               |                 |
+                               |      <snap>     |
+                               |                 |
+                               \ _ _________ _ _ /
+                                
 
-littlesnapper:	captures and prints snapchat pictures to a connected BERG Little Printer.
+                            L I T T L E S N A P P E R
 
+
+littlesnapper: captures and prints snapchat pictures to a connected BERG Little Printer.
 
 */
 
+
 // main program.
 
-require('snaphax/snaphax.php');
 require('imageCrop/image.php');
 require('sender.php');
 require('imageserver.php');
+require('vendor/autoload.php');
 
 function main()
 {
-    
-    $snaptotal = 0; // total images collected.
-    $count     = 0; // how many snaps littlesnapper collected.
-    $url; // image url.
-    
-    echo 'littlesnapper v1.2 [c] 2013 hako';
+
+    $snaptotal = 0; // total number of images collected.
+    $count = 0;     // how many snaps littlesnapper collected.
+    $url; 	        // image url.
+
+    echo 'littlesnapper v1.3 [c] 2013 hako';
     echo "\n";
     echo "\n";
-    
-    $account = array();
-    
-    $account['username'] = ""; // username
-    $account['password'] = ""; // password
-    
+
+    $config = parse_ini_file("config.ini.php"); // load config file
+
+    $usr = $config["usr"];
+    $pass = $config["pass"];
+
+    if(!$config) {
+
+        echo "failed to parse config file.";
+        exit();
+
+    }
+
+    if($config["delete"] == "true")
+
+    {
+        (bool) $config["delete"] = true;
+        
+    } elseif ($config["delete"] == "false") {
+
+        (bool) $config["delete"] = false;
+        
+    }
+
     // instantiating objects.
-    $s  = new Snaphax($account);
+    $s  = new Snapchat($usr, $pass);
     $i  = new SimpleImage();
     $lp = new Sender();
-    
-    $result = $s->login();
-    
-    // check for new images.
-    if (empty($result) || empty($result['snaps'])) {
+
+    // check login credentials.
+    if ($s->auth_token == false){
+        echo "bad username or password";
+        exit();
+    }
+
+    //cast an array to the recieved snaps.
+    $result = (array) $s->getSnaps();
+
+
+    // check for new snaps.
+    if (empty($result) || empty($result[0]->id)) {
         echo "retrieved $count snaps.";
         echo "\n";
         echo "nothing to print.";
         echo "\n";
+        $s->logout();
         exit;
     }
-    
-    
-    // get images (if any)
-    foreach ($result['snaps'] as $snap) {
         
-        // Fetch a snap if it exists.
-        
-        if ($snap['st'] == SnapHax::STATUS_NEW) {
-            $blob_data = $s->fetch($snap['id']);
+    // loop through each retrieved snap (if any)
+	foreach($result as $snap) { 
+
+        // Fetch a new snap if it exists.
+        if ($snap->status == Snapchat::STATUS_DELIVERED) {
+
+	      $blob_data = $s->getMedia($snap->id);
             if ($blob_data) {
-                echo "fetching image $snap[id].jpg from $snap[sn]\n";
+                echo "fetching image $snap->id.jpg from $snap->sender\n";
                 $snaptotal = ++$count;
-                
-                if ($snap['m'] == SnapHax::MEDIA_IMAGE)
+                if ($blob_data == Snapchat::MEDIA_IMAGE)
                     $ext = '.jpg';
                 else {
                     $ext = 'mp4';
                 }
                 
-                
-                // Put the contents of the captured image in a file
-                file_put_contents($snap['id'] . $ext, $blob_data);
-                $i->load($snap['id'] . $ext);
+                // save the contents of the captured snap as an image
+                file_put_contents($snap->id . $ext, $blob_data);
+                $i->load($snap->id . $ext);
                 $i->resizeToWidth(400);
-                $i->save($snap['id'] . $ext);
+                $i->save($snap->id . $ext);
                 echo "\n \n";
                 
-                // show the image on the server.
-                showimage($snap['id'] . $ext);
+                // host the image on the server.
+                showimage($snap->id . $ext);
                 
-                $url = ($snap['id'] . $ext);
+                $url = ($snap->id . $ext);
                 
                 if ($url == '') {
                     
@@ -103,36 +153,46 @@ function main()
                     
                 }
                 
-            }
-            
+            }           
+}
             // stop littlesnapper if there is nothing to print.
             if ($count < 1) {
                 echo "retrieved $count snaps.";
                 echo "\n";
                 echo "nothing to print.";
                 echo "\n";
+                $snap->logout();
                 exit;
             }
             
         }
-        
-    }
     
     echo "retrieved $snaptotal snap(s). \n";
     
     // Check if $url is empty before printing.
-    
-    if(empty($url))
+    if(empty($url) || empty($config["server_url"]) || empty($config["api_key"]))
 		
 		{
+            $snap->logout();
 			exit();
 		}
     
     // Send picture to the little printer to print.
-    
     echo "Sending image to the little printer...";
-    $lp->sendtoprinter($url);
+
+    $lp->sendtoprinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"]);
+    $snap->logout();
+
+    if(!$lp->sendtoprinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"]))
+    {
+
+        echo "failed to send image to the little printer.";
+        $snap->logout();
+        exit();
+    }
+
 }
+
 main();
 
 ?>

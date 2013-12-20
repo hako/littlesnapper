@@ -21,9 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+                                           ``` .oo- 
+                            /++++++++++++++++++++++o/
+                            s:.....................:s
+                            s:.....................:s
+                            s:....+osssssoosyos/...:s
+                            s:...-///////+yddhhy...:s
+                            s:...sssssyhmMNmMmNd:..:s
+                            s:...MMMMdNMMMMhMMMMo..:s
+                            s:...mMMMMMMMMMMMMMN/..:s
+                            s:.../MMMMMdmdNMMMMy...:s
+                            s:...-dMMMMMNMMMMMN/...:s
+                            s:......----------.....:s
+                            s:.....................:s
+                            oo+++++++++++++++++++++oo
+                                |               |     
+                                |     - -  -    |     
+                                |_  __ _______  |   
+                               |                 |
+                               |                 |
+                               |      <snap>     |
+                               |                 |
+                               \ _ _________ _ _ /
+                                
 
-littlesnapper:	captures and prints snapchat pictures to a connected BERG Little Printer.
+                            L I T T L E S N A P P E R
 
+
+littlesnapper: captures and prints snapchat pictures to a connected BERG Little Printer.
 
 */
 

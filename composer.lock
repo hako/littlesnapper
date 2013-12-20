@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "8e1ff8b5633e9d8da0e6a481331c1db5",
+    "packages": [
+        {
+            "name": "dstelljes/php-snapchat",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dstelljes/php-snapchat.git",
+                "reference": "bea4921086687a31d6e47cab4a091b5cb2f56a0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dstelljes/php-snapchat/zipball/bea4921086687a31d6e47cab4a091b5cb2f56a0b",
+                "reference": "bea4921086687a31d6e47cab4a091b5cb2f56a0b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mcrypt": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stelljes",
+                    "email": "iam@danielstelljes.net"
+                }
+            ],
+            "description": "A PHP library for the Snapchat API",
+            "keywords": [
+                "snapchat"
+            ],
+            "time": "2013-12-07 00:35:13"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "dstelljes/php-snapchat": 20
+    },
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": [
+
+    ]
+}

@@ -32,21 +32,42 @@ to run littlesnapper you would need:
 
 -   A BERG Little Printer
 
--   A server or vps
+-   A local, hosted server or vps
 
 (I've tried heroku and i'm working on it in the future.)
 
 ## how to use
 
-first of all, replace the following in the source:
+first of all, install dependencies by typing: 
 
--   'username' = "" - where "" is your snapchat username
+```composer install```
 
--   'password' = "" - where "" is your snapchat password
+next, replace the following in the ```config.ini.php```
 
--   \$lp\_key = "" - where "" is your little printer key.
+###snapchat config
 
--   'DIRECTORY\_TO\_LITTLE\_SNAPPER' - your url or domain name where littlesnapper is hosted.
+```usr``` = your snapchat username. eg: Evan 
+
+```pass``` = your snapchat password. eg: Ghostface
+
+```delete``` = do you want to delete or keep captured snaps? eg: true
+	
++ _In ALL cases this should be ```true``` as you do NOT need to keep images on your server._ 
+
+
+###littleprinter config
+
+```api_key``` = your littleprinter API key.
+
+```server_url``` = your servers root directory that littlesnapper is hosted on.
+
++ _[ngrok](https://ngrok.com/) is awesome to host local servers securely on the web._ 
+
+```time_to_delete``` = the time you want to delete the image in seconds. eg 20
+
++	_if you type null or a strange value, littlesnapper defaults to 45 seconds._
+
+_also, make sure your folder **permissions** are setup properly._
 
 and now using php in the command-line, type:
 
@@ -74,13 +95,15 @@ just don't turn it into a cron job disaster like mine was.
 
 (in order of precedence)
 
-support for printing multiple snaps.
+<del>security<del>
 
-security
-
-config file.
+<del>config file.<del>
 
 <del>implement dithering algorithms (for shading)<del>
+
+support for printing multiple snaps.
+
+include more dithering features for configuration.
 
 ## license
 
@@ -88,20 +111,18 @@ MIT
 
 ## credits
 
-littlesnapper was made by [@hakobyte][@hakobyte]
+**littlesnapper** was made by [@hakobyte][@hakobyte]
 
-snaphax - a reverse engineered snapchat library to interface with the snapchat api by
+**php-snapchat** - a fork of the reverse engineered snapchat library by **[@dstelljes][@dstelljes]** 
 
-[@tlack][@tlack]
-
-&
-
-[@adamcaudill][@adamcaudill]
-
-imagecrop - an image cropping library made by [abraham daniel][@abrahamdaniel]
++ _**(based on snaphax by [@tlack][@tlack] & [@adamcaudill][@adamcaudill])**_
 
 
-Team Snapchat
+
+**imagecrop** - an image cropping library made by [abraham daniel][@abrahamdaniel]
+
+
+**Team Snapchat**
 
 and
 
@@ -110,6 +131,7 @@ BERG Cloud for creating Little Printer!
 http://hakob.yt/e/
 
   [@hakobyte]: https://twitter.com/hakobyte
+  [@dstelljes]: https://github.com/dstelljes
   [@tlack]: https://twitter.com/tlack
   [@adamcaudill]: https://twitter.com/adamcaudill
   [@abrahamdaniel]:https://github.com/abrahamdaniel/imageCrop
