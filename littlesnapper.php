@@ -161,7 +161,7 @@ function main()
                 echo "\n";
                 echo "nothing to print.";
                 echo "\n";
-                $snap->logout();
+                $s->logout();
                 exit;
             }
             
@@ -173,7 +173,7 @@ function main()
     if(empty($url) || empty($config["server_url"]) || empty($config["api_key"]))
 		
 		{
-            $snap->logout();
+            		$s->logout();
 			exit();
 		}
     
@@ -187,7 +187,7 @@ function main()
     {
 
         echo "failed to send image to the little printer.";
-        $snap->logout();
+        $s->logout();
         exit();
     }
 
