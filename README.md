@@ -111,6 +111,10 @@ include more dithering features for configuration.
 
 MIT
 
+=[],
+
+ > _munchi says thanks, for using this software, knowing that you will do **good** with it._	
+
 ## credits
 
 **littlesnapper** was made by [@hakobyte][@hakobyte]
