@@ -1,3 +1,5 @@
+![](http://www.tiikoni.com/tis/view/image.php?id=c2cbb24)
+
 # littlesnapper
 
 ![](http://hakobaito.co.uk/content/01389892049828525366.png)
