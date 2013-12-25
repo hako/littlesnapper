@@ -1,4 +1,4 @@
-![](http://www.tiikoni.com/tis/view/image.php?id=c2cbb24)
+![](http://i40.tinypic.com/2d8nkmp.png)
 
 # littlesnapper
 
