@@ -1,0 +1,297 @@
+<!--                                            ``` .oo- 
+                            /++++++++++++++++++++++o/
+                            s:.....................:s
+                            s:.....................:s
+                            s:....+osssssoosyos/...:s
+                            s:...-///////+yddhhy...:s
+                            s:...sssssyhmMNmMmNd:..:s
+                            s:...MMMMdNMMMMhMMMMo..:s
+                            s:...mMMMMMMMMMMMMMN/..:s
+                            s:.../MMMMMdmdNMMMMy...:s
+                            s:...-dMMMMMNMMMMMN/...:s
+                            s:......----------.....:s
+                            s:.....................:s
+                            oo+++++++++++++++++++++oo
+                                |               |     
+                                |     - -  -    |     
+                                |_  __ _______  |   
+                               |                 |
+                               |                 |
+                               |      <snap>     |
+                               |                 |
+                               \ _ _________ _ _ /
+                                
+
+                            L I T T L E S N A P P E R
+
+
+littlesnapper: captures and prints snapchat pictures to a connected BERG Little Printer.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="captures and prints snapchat pictures to a connected BERG Little Printer. ">
+    <meta name="author" content="">
+
+    <title>littlesnapper</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the 'One Page Wonder' Template -->
+    <link href="css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- Custom buttons -->
+    <link href="css/component.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="header-image">
+
+
+      <div class="headline">
+        <div class="container">
+
+      <hr class="featurette-divider">
+
+      <img src="img/icon.png"></img>
+ &nbsp;
+          <h3>LITTLESNAPPER</h3>
+          &nbsp;
+          <h4>captures and prints snapchat pictures to a connected BERG Little Printer.</h4>
+ &nbsp;
+
+<a href="https://github.com/hako/littlesnapper"><button class="btn btn-6 btn-6a">View on GitHub</button></a>
+      <hr class="featurette-divider">
+        </div>
+      </div>
+
+    </div>
+
+     &nbsp;
+
+    <!-- /header-image -->
+
+    <div class="container">
+
+      <!-- START THE FEATURETTES -->
+
+      <div class="featurette" id="what">
+
+        <h2>what is it?</h2>
+
+<hr class="featurette-style" style="
+  width: 7%;  border: 0;
+  border-bottom: 7px solid #FFDC51;  margin-left: inherit;">
+
+        <p>littlesnapper captures unread snapchat images, hosts the image for 45 seconds to allow the little printer to parse and print the image and then deletes it.</p>
+
+
+        You would need a <u>BERG Little Printer</u> to use littlesnapper. It looks like this.
+
+        <br>
+        <br>
+
+        <img src="img/lp_front.jpg" style="width:50%"></img>
+
+        <br>
+
+        <i><small>cute right? :)</small></i>
+
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+      <hr>
+
+
+
+            <div class="featurette" id="media">
+
+        <h2>media</h2>
+
+<hr class="featurette-style" style="
+  width: 7%;  border: 0;
+  border-bottom: 7px solid #FFDC51;  margin-left: inherit;">
+
+        <p>Here are some example images which littlesnapper printed to the litteprinter.</p>
+
+
+        <p>note: all these images where printed from <u>SNAPCHAT</u>.
+
+        <br>
+        <br>
+
+        <img src="img/lp-snaps.jpg" style="width:50%"></img>
+
+        <br>
+
+        <br>
+
+        <img src="img/asdf.jpg" style="width:25%"></img>
+
+
+        <br>
+        <br>
+
+        <h4>comparison (image saved on snapchat)</h4>
+
+        <br>
+
+        <img src="img/comparison.jpg" style="width:25%"></img>
+
+        <br>
+        <br>
+
+        <h4>vine</h4>
+
+        <iframe class="vine-embed" src="https://vine.co/v/hEYdBzeAMa6/embed/postcard" width="320" height="320" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>
+
+
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+      <hr>
+
+
+
+            <div class="featurette" id="how">
+
+        <h2>instructions</h2>
+
+<hr class="featurette-style" style="
+  width: 7%;  border: 0;
+  border-bottom: 7px solid #FFDC51;  margin-left: inherit;">
+
+        <p>You need <u>PHP 5.1+</u> installed to use littlesnapper.</p>
+
+        <p>after that you will need to install dependecies using the commandline for littlesnapper by using composer.</p>
+
+         <pre>composer install</pre>
+
+        <p>next, configure the settings in the <pre>config.ini.php</pre></p>
+
+         <br>
+
+        <a href="https://github.com/hako/littlesnapper#snapchat-config">more instructions here</a>
+
+        <br>
+
+         <br>
+
+        <p>then run this command in the commandline:</p>
+
+        <pre>php littlesnapper</pre>
+
+         <br>
+
+        <p>and you're done!</p>
+
+         <br>
+
+        <small><i>now at this point, littlesnapper will tell you if it retrieves snaps. it will generally output:</i></small>
+
+         <br>
+          <br>
+
+      <small><pre>retrived 0 snaps <br>nothing to print.</pre></small>
+
+
+          <small>to show it works.</small>
+
+          <small>:)</small>
+
+          <br>
+          <br>
+
+          <h4>Extras</h4>
+
+          <p>You can also use a <u>cronjob</u> to schedule littlesnapper to check for new snaps.</p>
+
+           <br>
+
+          <p>checking lower than a minute produces a nasty result.<p>
+
+          <br>
+          <br>
+
+          <blockquote class="twitter-tweet" lang="en"><p>Came home to see my little printer cron job disaster :S <a href="http://t.co/dTzYMNWw1Q">pic.twitter.com/dTzYMNWw1Q</a></p>&mdash; Wesley Hill (@hakobyte) <a href="https://twitter.com/hakobyte/statuses/399846094852861953">November 11, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          <br>
+          <br>
+
+          <p>This was is a short introduction into littlesnapper, for more information visit the github page.</p>
+
+         <a href="https://github.com/hako/littlesnapper"> https://github.com/hako/littlesnapper</a>
+
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+      <hr>
+
+
+                  <div class="featurette" id="license">
+
+        <h2>license</h2>
+
+<hr class="featurette-style" style="
+  width: 7%;  border: 0;
+  border-bottom: 7px solid #FFDC51;  margin-left: inherit;">
+
+        <h4>MIT</h4>
+        <blockquote>The MIT License (MIT) <br><br>
+
+Copyright (c) 2013 Wesley Hill
+<br><br>
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+<br><br>
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+<br><br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </blockquote>
+
+<h6><small>'littlesnapper' is not endorsed by or affiliated with Snapchat, use at your own risk.</small></h6>
+
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+      <hr>
+
+
+
+      <!-- FOOTER -->
+      <footer>
+        <h6>COPYRIGHT [C] WESLEY HILL 2013</h6>
+		<h6><small>Example images of Little Printer by BERG Cloud</small></h6>
+      </footer>
+      <!-- /END OF FOOTER -->
+
+    </div><!-- /container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+  </body>
+
+</html>
