@@ -40,6 +40,10 @@ to run littlesnapper you would need:
 
 ## how to use
 
+Here is a democast
+ 
+<a href="http://quick.as/7zoi4wg">http://quick.as/7zoi4wg</a>
+
 first of all, install dependencies by typing: 
 
 ```composer install```
