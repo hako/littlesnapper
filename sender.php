@@ -134,19 +134,18 @@ class Sender
 
             $timer = (int) $delete_time;
             
-            echo "Deleting captured image in " . $timer . "s\n";
+            echo "Deleting captured snap in " . $timer . "s\n";
             sleep($timer);
             showimage("");
             unlink($url);
-            echo "Snap deleted.";
-            
+            echo "snap deleted.\n";
             exit();
         }
 
         else
         {
 
-            echo "Snap saved. Your littleprinter will print the captured snap.";
+            echo "snap saved. Your littleprinter will print the captured snap.";
             exit();
 
         }
