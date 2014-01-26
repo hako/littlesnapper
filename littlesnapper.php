@@ -102,6 +102,7 @@ function main()
     // check login credentials.
     if ($s->auth_token == false){
         echo "bad username or password";
+        echo "\n";
         exit();
     }
 
