@@ -174,17 +174,32 @@ function main()
     if(empty($url) || empty($config["server_url"]) || empty($config["api_key"]))
 		
 		{
-            		$s->logout();
+            $s->logout();
 			exit();
 		}
-    
+
+    // check the dither is true or false in the config.
+    if ($config["dither"] == "true")
+    {
+
+        (bool) $config["dither"] = true;
+    }
+
+    else if ($config["dither"] == "false")
+    {
+
+        (bool) $config["dither"] = false;
+    }
+
     // Send picture to the little printer to print.
     echo "Sending image to the little printer...";
 
-    $lp->sendtoprinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"]);
+
+    $lp->sendToPrinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"], $config["dither"]);
+
     $snap->logout();
 
-    if(!$lp->sendtoprinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"]))
+    if(!$lp->sendToPrinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"], $config["dither"]))
     {
 
         echo "failed to send image to the little printer.";

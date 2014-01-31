@@ -1,1 +1,1 @@
-<html><center><h1>littlesnapper<h1/><img class="dither" src=""/></body></center><html/>
+<html><center><img src="img/logo.PNG"/><br><br><img class="dither" src=""/></body></center><html/>

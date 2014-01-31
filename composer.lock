@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8e1ff8b5633e9d8da0e6a481331c1db5",
+    "hash": "f2adf128ed2dcd729c3ac2d8b2312557",
     "packages": [
         {
-            "name": "dstelljes/php-snapchat",
+            "name": "jorgenphi/php-snapchat",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dstelljes/php-snapchat.git",
-                "reference": "bea4921086687a31d6e47cab4a091b5cb2f56a0b"
+                "url": "https://github.com/JorgenPhi/php-snapchat.git",
+                "reference": "237c62e3cc8c7be7f60e5b90472e04c1e9e83aa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dstelljes/php-snapchat/zipball/bea4921086687a31d6e47cab4a091b5cb2f56a0b",
-                "reference": "bea4921086687a31d6e47cab4a091b5cb2f56a0b",
+                "url": "https://api.github.com/repos/JorgenPhi/php-snapchat/zipball/237c62e3cc8c7be7f60e5b90472e04c1e9e83aa2",
+                "reference": "237c62e3cc8c7be7f60e5b90472e04c1e9e83aa2",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
             "keywords": [
                 "snapchat"
             ],
-            "time": "2013-12-07 00:35:13"
+            "time": "2014-01-27 23:33:54"
         }
     ],
     "packages-dev": [
@@ -56,7 +56,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "dstelljes/php-snapchat": 20
+        "jorgenphi/php-snapchat": 20
     },
     "platform": {
         "php": ">=5.3.0"

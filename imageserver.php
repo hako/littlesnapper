@@ -62,7 +62,7 @@ function showimage($image)
     
     //	fill the $contents with HTML including the $image string.
     
-    $contents = '<html><center><h1>littlesnapper<h1/><img class="dither" src="' . $image . '"/></body></center><html/>';
+    $contents = '<html><center><img src="img/logo.PNG"/><br><br><img class="dither" src="' . $image . '"/></body></center><html/>';
     
     //	save the file.
     

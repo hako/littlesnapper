@@ -56,28 +56,8 @@ littlesnapper: captures and prints snapchat pictures to a connected BERG Little 
 
 class Sender
 {
-
-    function ditherorthreshold($var)
-    {
-
-        //TODO ADD MORE IMAGE MODES. (using two for now.)
-
-        switch ($var) {
-            case '0':
-                return "dither";
-                break;
-            case '1':
-                return " "; // threshold.
-                break;
-            
-            default:
-                break;
-        }
-
-
-    }
     
-    function sendtoprinter($url, $api_key, $server_url, $delete_option, $delete_time)
+    function sendToPrinter($url, $api_key, $server_url, $delete_option, $delete_time, $ditherType)
     {
 
         if (!is_numeric($delete_time)) {
@@ -97,6 +77,17 @@ class Sender
             // if none is provided, default.
             $delete_time = 45;
         }
+
+        switch ($ditherType) {
+            case true:
+                $ditherType = "dither";
+                break;
+            case false:
+                $ditherType = "threshold";
+                break;  
+            default:
+                break;
+            }
         
         $delete_snaps = $delete_option;
         
@@ -114,7 +105,7 @@ class Sender
         
         curl_setopt($cur, CURLOPT_POST, true);
         curl_setopt($cur, CURLOPT_POSTFIELDS, $postargs);
-        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><h1>littlesnapper<h1/><img%20class="dither"%20src="' . $server_url . "/" . $postargs['html'] . '"</img></center></body></html>');
+        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><img%20src="'. $server_url . 'img/logo.PNG"</img><br><br><img%20class="' . $ditherType .'"%20src="' . $server_url . "/" . $postargs['html'] . '"</img></center></body></html>');
 
         curl_exec($cur);
         

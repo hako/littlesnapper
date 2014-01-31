@@ -15,6 +15,7 @@
 usr=
 pass=
 delete="true"
+dither="true"
 ;debug=false
 
 ;littleprinter configuration settings
