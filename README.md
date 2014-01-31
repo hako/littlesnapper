@@ -1,4 +1,4 @@
-![https://hako.github.io/littlesnapper](http://i40.tinypic.com/2d8nkmp.png)
+![https://hako.github.io/littlesnapper](http://img42.com/Lg17R+)
 
 # littlesnapper
 
@@ -57,8 +57,10 @@ next, replace the following in the ```config.ini.php```
 ```pass``` = your snapchat password. eg: Ghostface
 
 ```delete``` = do you want to delete or keep captured snaps? eg: true
-	
+
 + _In ALL cases this should be ```true``` as you do NOT need to keep images on your server._ 
+
+```dither``` = image dithering options: ```true``` = dither, ```false``` = threshold
 
 
 ###littleprinter config
