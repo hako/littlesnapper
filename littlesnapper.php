@@ -67,7 +67,7 @@ function main()
     $count = 0;     // how many snaps littlesnapper collected.
     $url; 	        // image url.
 
-    echo 'littlesnapper v1.3 [c] 2013 hako';
+    echo 'littlesnapper v1.3.5 [c] 2014 hako';
     echo "\n";
     echo "\n";
 
@@ -117,7 +117,7 @@ function main()
         echo "nothing to print.";
         echo "\n";
         $s->logout();
-        exit;
+        exit();
     }
         
     // loop through each retrieved snap (if any)
@@ -130,13 +130,17 @@ function main()
             if ($blob_data) {
                 echo "fetching image $snap->id.jpg from $snap->sender\n";
                 $snaptotal = ++$count;
-                if ($blob_data == Snapchat::MEDIA_IMAGE)
+
+                if ($blob_data == Snapchat::MEDIA_IMAGE){
                     $ext = '.jpg';
-                else {
-                    $ext = 'mp4';
                 }
-                
-                // save the contents of the captured snap as an image
+                elseif($blob_data == Snapchat::MEDIA_VIDEO || Snapchat::MEDIA_VIDEO_NOAUDIO){
+                    echo "littlesnapper cannot print out videos, (yet)";
+                    $s->logout();
+                    exit();
+                }
+
+                // littlesnapper can only do images.
                 file_put_contents($snap->id . $ext, $blob_data);
                 $i->load($snap->id . $ext);
                 $i->resizeToWidth(400);
@@ -149,7 +153,8 @@ function main()
                 $url = ($snap->id . $ext);
                 
                 if ($url == '') {
-                    
+
+                    $s->logout();
                     exit();
                     
                 }
