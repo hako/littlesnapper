@@ -1,6 +1,4 @@
-![https://hako.github.io/littlesnapper](http://img42.com/Lg17R+)
-
-# littlesnapper
+![https://hako.github.io/littlesnapper](https://raw2.github.com/hako/littlesnapper/master/img/logo.PNG)
 
 ![](http://hakobaito.co.uk/content/01389892049828525366.png)
 
