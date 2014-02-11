@@ -119,6 +119,8 @@ class Sender
         echo "\n";
         echo "\n";
         
+        curl_close($cur);
+        
         if ($delete_snaps == true) {
             
             // Deletes the snap from the server, just like snapchat ;)
