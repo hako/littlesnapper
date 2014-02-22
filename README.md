@@ -4,6 +4,7 @@
 
 ![](http://hakobaito.co.uk/content/01389892049828525366.png)
 
+[![Gitter chat](https://badges.gitter.im/hako/littlesnapper.png)](https://gitter.im/hako/littlesnapper)
 
 #### a tool to capture and print snapchat pictures to a connected inkless BERG Little Printer.
 
