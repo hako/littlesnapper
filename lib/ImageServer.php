@@ -1,7 +1,8 @@
 <?php
+
 /*
 
-Copyright (c) 2014 Wesley Hill <hakobyte@gmail.com>
+Copyright (c) 2014 Wesley Hill <wesley@hakobaito.co.uk>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to
@@ -21,7 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-                                           ``` .oo- 
+                                           ``` .oo-
                             /++++++++++++++++++++++o/
                             s:.....................:s
                             s:.....................:s
@@ -35,15 +36,15 @@ SOFTWARE.
                             s:......----------.....:s
                             s:.....................:s
                             oo+++++++++++++++++++++oo
-                                |               |     
-                                |     - -  -    |     
-                                |_  __ _______  |   
+                                |               |
+                                |     - -  -    |
+                                |_  __ _______  |
                                |                 |
                                |                 |
                                |      <snap>     |
                                |                 |
                                \ _ _________ _ _ /
-                                
+
 
                             L I T T L E S N A P P E R
 
@@ -54,20 +55,20 @@ littlesnapper: captures and prints snapchat pictures to a connected BERG Little 
 
 //	show and an image to print, then save it.
 
-function showimage($image)
-{
-    $file = 'index.php';
-    
-    file_get_contents($file);
-    
-    //	fill the $contents with HTML including the $image string.
-    
-    $contents = '<html><center><img src="img/logo.PNG"/><br><br><img class="dither" src="' . $image . '"/></body></center><html/>';
-    
-    //	save the file.
-    
-    file_put_contents($file, $contents);
-    
+function showimage($image) {
+
+	$file = 'index.php';
+
+	file_get_contents($file);
+
+	//	fill the $contents with HTML including the $image string.
+
+	$contents = '<html><center><img src="img/logo.PNG"/><br><br><img class="dither" src="'.$image.'"/></body></center><html/>';
+
+	//	save the file.
+
+	file_put_contents($file, $contents);
+
 }
 
 ?>

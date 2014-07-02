@@ -53,20 +53,86 @@ littlesnapper: captures and prints snapchat pictures to a connected BERG Little 
 
 */
 
-require_once ('lib/LittleSnapper.php');
+//sends the image url to little printer.
 
-echo "\033[93mlittlesnapper v1.4 [c] 2014 hako \033[0m";
-echo "\n";
+class Sender {
 
-$l = new LittleSnapper();
+	function sendToPrinter($url, $data) {
+		$api_key       = $data['api_key'];
+		$server_url    = $data['server_url'];
+		$delete_option = $data['delete'];
+		$ditherType    = $data['dither'];
+		$delete_time   = $data['time_to_delete'];
 
-$new_snap = $l->checkForNewSnaps();
+		//configuration checks.
+		if (!is_numeric($delete_time)) {
 
-if ($new_snap == false) {
-	exit();
-} else {
-	$l->getSnapFromHost($new_snap);
-	$l->printSnap();
+			echo "\n";
+			echo "Warning! config error, time_to_delete is not a number.";
+			echo "\n";
+			echo "defaulting to 45 seconds";
+			$delete_time = 45;
+
+		} elseif (is_int($delete_time)) {
+
+			$delete_time = $delete_time;
+
+		} elseif ($delete_time == "null" || is_null($delete_time) || $delete_time == 0) {
+
+			// if none is provided, default to 45.
+			$delete_time = 45;
+		}
+		// dither check.
+		switch ($ditherType) {
+			case true:
+				$ditherType = "dither";
+				break;
+			case false:
+				$ditherType = "threshold";
+				break;
+			default:
+				break;
+		}
+
+		$delete_snaps = $delete_option;
+
+		$lp_key = $api_key;
+		$lp_api = 'http://remote.bergcloud.com/playground/direct_print/'.$lp_key.'?';
+
+		echo "\n";
+
+		// HTTP POST arguments.
+		$postargs = array(
+			'html' => $url,
+		);
+
+		$cur = curl_init();
+
+		curl_setopt($cur, CURLOPT_POST, true);
+		curl_setopt($cur, CURLOPT_POSTFIELDS, $postargs);
+		curl_setopt($cur, CURLOPT_URL, $lp_api.'&html=<html><body><center><img%20src="'.$server_url.'img/logo.PNG"</img><br><br><img%20class="'.$ditherType.'"%20src="'.$server_url.$postargs['html'].'"</img></center></body></html>');
+
+		curl_exec($cur);
+		echo "\n";
+		curl_close($cur);
+
+		if ($delete_snaps == true) {
+
+			// Deletes the snap from the server, just like snapchat ;)
+			$timer = (int) $delete_time;
+
+			echo "\033[1mDeleting captured snap in ".$timer."s\033[0m\n";
+			sleep($timer);
+			showimage("");
+			unlink($url);
+			echo "snap deleted. 👻 \n";
+			exit();
+		} else {
+
+			echo "\033[1msnap saved. Your littleprinter will print the captured snap.\033[0m";
+			exit();
+		}
+
+	}
+
 }
-
-?>
