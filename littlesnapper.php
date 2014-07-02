@@ -1,7 +1,7 @@
 <?php
 /*
 
-Copyright (c) 2014 Wesley Hill <wesley@hakobaito.co.uk>
+Copyright (c) 2014 Wesley Hill <hakobyte@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to
@@ -51,23 +51,169 @@ SOFTWARE.
 littlesnapper: captures and prints snapchat pictures to a connected BERG Little Printer.
 
 */
-    require_once('lib/LittleSnapper.php');
-    
-    echo "\033[93mlittlesnapper v1.4 [c] 2014 hako \033[0m";
+
+
+// main program.
+
+require('imageCrop/image.php');
+require('sender.php');
+require('imageserver.php');
+require('vendor/autoload.php');
+
+function main()
+{
+
+    $snaptotal = 0; // total number of images collected.
+    $count = 0;     // how many snaps littlesnapper collected.
+    $url; 	        // image url.
+
+    echo 'littlesnapper v1.3.5 [c] 2014 hako';
     echo "\n";
-    
-    $l = new LittleSnapper();
+    echo "\n";
 
-    $new_snap = $l->checkForNewSnaps(); 
+    $config = parse_ini_file("config.ini.php"); // load config file
 
-    if($new_snap == false)
+    $usr = $config["usr"];
+    $pass = $config["pass"];
+
+    if(!$config) {
+
+        echo "failed to parse config file.";
+        exit();
+
+    }
+
+    if($config["delete"] == "true")
+
     {
+        (bool) $config["delete"] = true;
+        
+    } elseif ($config["delete"] == "false") {
+
+        (bool) $config["delete"] = false;
+        
+    }
+
+    // instantiating objects.
+    $s  = new Snapchat($usr, $pass);
+    $i  = new SimpleImage();
+    $lp = new Sender();
+
+    // check login credentials.
+    if ($s->auth_token == false){
+        echo "bad username or password";
+        echo "\n";
         exit();
     }
-    else
-    {
-        $l->getSnapFromHost($new_snap);
-        $l->printSnap();
+
+    //cast an array to the recieved snaps.
+    $result = (array) $s->getSnaps();
+
+
+    // check for new snaps.
+    if (empty($result) || empty($result[0]->id)) {
+        echo "retrieved $count snaps.";
+        echo "\n";
+        echo "nothing to print.";
+        echo "\n";
+        $s->logout();
+        exit();
     }
+        
+    // loop through each retrieved snap (if any)
+	foreach($result as $snap) { 
+
+        // Fetch a new snap if it exists.
+        if ($snap->status == Snapchat::STATUS_DELIVERED) {
+
+	      $blob_data = $s->getMedia($snap->id);
+            if ($blob_data) {
+                echo "fetching image $snap->id.jpg from $snap->sender\n";
+                $snaptotal = ++$count;
+
+                if ($blob_data == Snapchat::MEDIA_IMAGE){
+                    $ext = '.jpg';
+                }
+                elseif($blob_data == Snapchat::MEDIA_VIDEO || Snapchat::MEDIA_VIDEO_NOAUDIO){
+                    echo "littlesnapper cannot print out videos, (yet)";
+                    $s->logout();
+                    exit();
+                }
+
+                // littlesnapper can only do images.
+                file_put_contents($snap->id . $ext, $blob_data);
+                $i->load($snap->id . $ext);
+                $i->resizeToWidth(400);
+                $i->save($snap->id . $ext);
+                echo "\n \n";
+                
+                // host the image on the server.
+                showimage($snap->id . $ext);
+                
+                $url = ($snap->id . $ext);
+                
+                if ($url == '') {
+
+                    $s->logout();
+                    exit();
+                    
+                }
+                
+            }           
+}
+            // stop littlesnapper if there is nothing to print.
+            if ($count < 1) {
+                echo "retrieved $count snaps.";
+                echo "\n";
+                echo "nothing to print.";
+                echo "\n";
+                $s->logout();
+                exit;
+            }
+            
+        }
     
+    echo "retrieved $snaptotal snap(s). \n";
+    
+    // Check if $url is empty before printing.
+    if(empty($url) || empty($config["server_url"]) || empty($config["api_key"]))
+		
+		{
+            $s->logout();
+			exit();
+		}
+
+    // check the dither is true or false in the config.
+    if ($config["dither"] == "true")
+    {
+
+        (bool) $config["dither"] = true;
+    }
+
+    else if ($config["dither"] == "false")
+    {
+
+        (bool) $config["dither"] = false;
+    }
+
+    // Send picture to the little printer to print.
+    echo "Sending image to the little printer...";
+
+
+    $lp->sendToPrinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"], $config["dither"]);
+
+    $snap->logout();
+
+    if(!$lp->sendToPrinter($url, $config["api_key"], $config["server_url"], $config["delete"], $config["time_to_delete"], $config["dither"]))
+    {
+
+        echo "failed to send image to the little printer.";
+        $s->logout();
+        exit();
+    }
+
+}
+
+main();
+
 ?>

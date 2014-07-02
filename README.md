@@ -1,4 +1,4 @@
-![0596386c-9310-11e3-84b7-1325cc87f642](https://cloud.githubusercontent.com/assets/2040416/3451167/ea0d3e18-018e-11e4-93b0-d748259ed7cb.png)
+![snip20140211_1](https://f.cloud.github.com/assets/2040416/2136330/0596386c-9310-11e3-84b7-1325cc87f642.png)
 
 ![https://hako.github.io/littlesnapper](https://raw2.github.com/hako/littlesnapper/master/img/logo.PNG)
 
@@ -11,7 +11,7 @@
 BERG Little Printer
 <http://bergcloud.com/littleprinter/>
 
-littlesnapper captures unread snapchat images, hosts the image for 45 seconds (or any amount you choose) to allow the little printer to parse and print the image and then deletes it.  
+littlesnapper captures unread snapchat images, hosts the image for 45 seconds to allow the little printer to parse and print the image and then deletes it.  
 
 littlesnapper's old name was *'whippersnapper'* 
 
@@ -49,7 +49,7 @@ first of all, install dependencies by typing:
 
 ```composer install```
 
-next, replace the following in the ```config/config.ini.php```
+next, replace the following in the ```config.ini.php```
 
 ###snapchat config
 
@@ -112,9 +112,7 @@ just don't turn it into a cron job disaster like mine was.
 
 support for printing multiple snaps.
 
-<del>include more dithering features for configuration.<del>
-
-snapchat stories!
+include more dithering features for configuration.
 
 ## license
 

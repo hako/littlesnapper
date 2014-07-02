@@ -1,7 +1,7 @@
 <?php
 /*
 
-Copyright (c) 2014 Wesley Hill <wesley@hakobaito.co.uk>
+Copyright (c) 2014 Wesley Hill <hakobyte@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to

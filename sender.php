@@ -1,7 +1,7 @@
 <?php
 /*
 
-Copyright (c) 2014 Wesley Hill <wesley@hakobaito.co.uk>
+Copyright (c) 2014 Wesley Hill <hakobyte@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to
@@ -57,13 +57,8 @@ littlesnapper: captures and prints snapchat pictures to a connected BERG Little 
 class Sender
 {
     
-    function sendToPrinter($url, $data)
+    function sendToPrinter($url, $api_key, $server_url, $delete_option, $delete_time, $ditherType)
     {
-        $api_key = $data['api_key'];
-        $server_url = $data['server_url'];
-        $delete_option = $data['delete'];
-        $ditherType = $data['dither'];
-        $delete_time = $data['time_to_delete'];
 
         if (!is_numeric($delete_time)) {
 
@@ -110,10 +105,20 @@ class Sender
         
         curl_setopt($cur, CURLOPT_POST, true);
         curl_setopt($cur, CURLOPT_POSTFIELDS, $postargs);
-        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><img%20src="'. $server_url . 'img/logo.PNG"</img><br><br><img%20class="' . $ditherType .'"%20src="' . $server_url . $postargs['html'] . '"</img></center></body></html>');
+        curl_setopt($cur, CURLOPT_URL, $lp_api . '&html=<html><body><center><img%20src="'. $server_url . 'img/logo.PNG"</img><br><br><img%20class="' . $ditherType .'"%20src="' . $server_url . "/" . $postargs['html'] . '"</img></center></body></html>');
 
         curl_exec($cur);
+        
+        //returns 'OK' if successful or 'Invalid code' for unsuccessful.
+        $info = curl_getinfo($cur);
+        
         echo "\n";
+        
+        echo ($info['http_code']);
+        
+        echo "\n";
+        echo "\n";
+        
         curl_close($cur);
         
         if ($delete_snaps == true) {
@@ -122,19 +127,20 @@ class Sender
 
             $timer = (int) $delete_time;
             
-            echo "\033[1mDeleting captured snap in " . $timer . "s\033[0m\n";
+            echo "Deleting captured snap in " . $timer . "s\n";
             sleep($timer);
             showimage("");
             unlink($url);
-            echo "snap deleted. 👻 \n";
+            echo "snap deleted.\n";
             exit();
         }
 
         else
         {
 
-            echo "\033[1msnap saved. Your littleprinter will print the captured snap.\033[0m";
+            echo "snap saved. Your littleprinter will print the captured snap.";
             exit();
+
         }
         
     }
