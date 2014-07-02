@@ -170,6 +170,7 @@ class LittleSnapper extends Snapchat {
 		// Check if $url et.al are empty before printing.
 		if (empty(self::$url) || empty($this->config["server_url"]) || empty($this->config["api_key"])) {
 			echo "\n\033[31m\033[1mSome configuration parameters are empty!! (cowardly refusing to print to the little printer!)\033[0m\n";
+			unlink(self::$url);
 			$this->user->logout();
 			exit();
 		} else {
