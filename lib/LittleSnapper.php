@@ -66,13 +66,19 @@ class LittleSnapper extends Snapchat {
 	private $s;
 	private $i;
 
-	public function __construct() {
+	public function __construct($username=NULL, $password=NULL) {
 
-		// load configuration file.
 		$config = LittleSnapper::loadConfig();
+		
+		// check if constructor parameters are still NULL,
+		// if so the credentials are loaded from config file
+		// instead of the constructor.
 
-		$username = $config["usr"];
-		$password = $config["pass"];
+		if ($username == NULL && $password == NULL) {
+
+			$username = $config["usr"];
+			$password = $config["pass"];
+		}
 
 		$s    = new Snapchat($username, $password);
 		$i    = new SimpleImage();
