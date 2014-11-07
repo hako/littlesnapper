@@ -1,6 +1,6 @@
 ![0596386c-9310-11e3-84b7-1325cc87f642](https://cloud.githubusercontent.com/assets/2040416/3451167/ea0d3e18-018e-11e4-93b0-d748259ed7cb.png)
 
-![https://hako.github.io/littlesnapper](https://raw2.github.com/hako/littlesnapper/master/img/logo.PNG)
+![https://hako.github.io/littlesnapper](https://raw.githubusercontent.com/hako/littlesnapper/master/img/logo.PNG)
 
 ![](http://hakobaito.co.uk/content/01389892049828525366.png)
 
